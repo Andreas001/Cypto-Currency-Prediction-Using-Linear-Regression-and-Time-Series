@@ -6,10 +6,13 @@
 
 This project uses python
 
-You will need these libraries:
+These libraries are used in the project:
 - Tensorflow
 - Keras
-- etc (insert more later)
+- Sklearn
+- Pandas
+- Matplotlib
+- Numpy
 
 # How to use
 
@@ -17,7 +20,7 @@ Do this
 
 ## Screenshots
 
-![screenshot-home](https://raw.githubusercontent.com/Andreas001/CryptoCurrencyTrendPrediction/master/screenshots/.JPG)
+![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/CryptoCurrencyTrendPrediction/master/Screenshots/CryptoBCH-USD10000.PNG)
 
 ## Authors
 
