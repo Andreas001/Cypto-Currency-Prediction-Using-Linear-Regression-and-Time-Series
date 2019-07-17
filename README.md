@@ -108,11 +108,15 @@ plt.plot(testPredictPlot)
 plt.show()
 ```
 
-Raw data
+First image: Raw data
+Second image: training and then actual prediction
+
+
 ![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/CryptoCurrencyTrendPrediction/master/Screenshots/Dataset.PNG)
 
-Training then actual prediction
+
 ![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/CryptoCurrencyTrendPrediction/master/Screenshots/Prediction.PNG)
+
 
 ## Authors
 
