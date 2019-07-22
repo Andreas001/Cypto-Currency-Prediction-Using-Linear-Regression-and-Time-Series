@@ -33,19 +33,19 @@ You can pick any of the given options of crypto currencies and everything will u
 
 A table will show you all of the data contained in the csv provided. You will be able to go through every single column and row with the table.
 
-![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Table.PNG)
+![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Table.png)
 
 #### Graph
 
 This graph will show you a line graph.
 
-![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Graph.PNG)
+![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Graph.png)
 
 #### Candlestick
 
 Since this is crypto currency so showing it with a candlestick would be optimal to show the complete data.
 
-![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Candlestick.PNG)
+![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Candlestick.png)
 
 #### Linear regression
 
@@ -70,7 +70,7 @@ plt.plot(X, Y_pred, color='red') # linear regression line
 plt.show()
 ```
 
-![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Linear_Regression.PNG)
+![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Linear_Regression.png)
 
 ## Time Series
 
@@ -143,7 +143,7 @@ plt.plot(testPredictPlot)
 plt.show()
 ```
 
-![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Time_Series)
+![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Time_Series.png)
 
 ## Authors
 
