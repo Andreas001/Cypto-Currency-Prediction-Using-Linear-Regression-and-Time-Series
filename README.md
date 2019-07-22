@@ -27,7 +27,7 @@ Once you got your setup just run the code and it should be running on your local
 
 You can pick any of the given options of crypto currencies and everything will update
 
-![screenshot-dropdown](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Dropdown.PNG)
+![screenshot-dropdown](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Dropdown.png)
 
 #### Table
 
