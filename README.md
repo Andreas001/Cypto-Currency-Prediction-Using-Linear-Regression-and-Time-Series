@@ -4,23 +4,54 @@
 
 ## Getting started
 
-This project uses python
+This project is about taking cypto currency taken from [Link](http://www.cryptodatadownload.com/data/northamerican/) saved as csv and then using that to display the data using Table, Graph, and Candlestick. But that isnt the only thing that's happening, the data is also used for simple predictions that is Linear regression & Time series where their results will also be shown by a graph.
 
-These libraries are used in the project:
-- Tensorflow
-- Keras
-- Sklearn
-- Pandas
-- Matplotlib
-- Numpy
+This project uses python and you can use any program like what i use, Pycharm to run the code. Before being able to run the code you will need to install these libraries: 
+
+- dash
+- sklearn
+- pandas
+- plotly
+- numpy
+- keras
+
+Dont forget to put the csv files in the same place as your code
+
+Note: all code shown in this readme isn't the final code or the exact code in app.py but rather to show you how it works or if the actual code for method is all you needed.
 
 ## How to use
 
-Do this
+Once you got your setup just run the code and it should be running on your localhost, in pycharm it will give you a link that you can click in the debbugger.
 
-## Linear regression
+#### Dropdown
 
-This is the most simplest but still useful method, the code below will generate the screenshot shown below
+You can pick any of the given options of crypto currencies and everything will update
+
+![screenshot-dropdown](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Dropdown.PNG)
+
+#### Table
+
+A table will show you all of the data contained in the csv provided. You will be able to go through every single column and row with the table.
+
+![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Table.PNG)
+
+#### Graph
+
+This graph will show you a line graph.
+
+![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Graph.PNG)
+
+#### Candlestick
+
+Since this is crypto currency so showing it with a candlestick would be optimal to show the complete data.
+
+![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Candlestick.PNG)
+
+#### Linear regression
+
+This is the most simplest and probably every data researcher first method in data science
+
+This code creates the prediction
 
 ```python
 data = pd.read_csv('BCH-USD.csv', header=0)  # load data set
@@ -31,15 +62,19 @@ linear_regressor.fit(X, Y)  # perform linear regression
 Y_pred = linear_regressor.predict(X)  # make predictions
 ```
 
+This code will give you a graph incase you wanted a quick test, this code isn't in app.py
+
 ```python
 plt.plot(X, Y, color='blue') # actual data
 plt.plot(X, Y_pred, color='red') # linear regression line
 plt.show()
 ```
 
-![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/CryptoCurrencyTrendPrediction/master/Screenshots/LinearRegression.PNG)
+![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Linear_Regression.PNG)
 
-## Deep learning
+## Time Series
+
+See screenshot after code to see what it produce
 
 ```python
 # convert an array of values into a dataset matrix
@@ -108,18 +143,18 @@ plt.plot(testPredictPlot)
 plt.show()
 ```
 
-First image: Raw data
-Second image: training and then actual prediction
-
-
-![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/CryptoCurrencyTrendPrediction/master/Screenshots/Dataset.PNG)
-
-
-![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/CryptoCurrencyTrendPrediction/master/Screenshots/Prediction.PNG)
-
+![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Time_Series)
 
 ## Authors
 
 * **[Andreas Geraldo](https://github.com/Andreas001)**
 * **[Thompson Darmawan Yanelie](https://github.com/insert-name)**
 * **[Jerry Aivanca Pattikawa](https://github.com/insert-name)**
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details
+
+## Help
+
+If you have any questions about this project sadly i wont be taking any questiosn
