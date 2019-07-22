@@ -4,7 +4,7 @@
 
 ## Getting started
 
-This project is about taking cypto currency taken from [Link](http://www.cryptodatadownload.com/data/northamerican/) saved as csv and then using that to display the data using Table, Graph, and Candlestick. But that isnt the only thing that's happening, the data is also used for simple predictions that is Linear regression & Time series where their results will also be shown by a graph.
+This project is about taking cypto currency taken from [Crypocurrency Data](http://www.cryptodatadownload.com/data/northamerican/) saved as csv and then using that to display the data using Table, Graph, and Candlestick. But that isnt the only thing that's happening, the data is also used for simple predictions that is Linear regression & Time series where their results will also be shown by a graph.
 
 This project uses python and you can use any program like what i use, Pycharm to run the code. Before being able to run the code you will need to install these libraries: 
 
@@ -150,6 +150,10 @@ plt.show()
 * **[Andreas Geraldo](https://github.com/Andreas001)**
 * **[Thompson Darmawan Yanelie](https://github.com/insert-name)**
 * **[Jerry Aivanca Pattikawa](https://github.com/insert-name)**
+
+## Acknowledgments
+
+Crypto currency data taken from [cryptodatadownload](http://www.cryptodatadownload.com/data/northamerican/)
 
 ## License
 
