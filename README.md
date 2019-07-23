@@ -148,8 +148,8 @@ plt.show()
 ## Authors
 
 * **[Andreas Geraldo](https://github.com/Andreas001)**
-* **[Thompson Darmawan Yanelie](https://github.com/insert-name)**
-* **[Jerry Aivanca Pattikawa](https://github.com/insert-name)**
+* **[Thompson Darmawan Yanelie](https://github.com/thompsonlie)**
+* **Jerry Aivanca Pattikawa**
 
 ## Acknowledgments
 
