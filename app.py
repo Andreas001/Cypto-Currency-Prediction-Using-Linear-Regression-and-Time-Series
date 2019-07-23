@@ -278,8 +278,8 @@ def update_graph_learn(value_dropdown):
     # create and fit Multilayer Perceptron model
     model = Sequential()
     model.add(Dense(12, input_dim=look_back, activation='relu'))
-    model.add(Dense(8, activation='relu'))
-    model.add(Dense(1))
+    # model.add(Dense(8, activation='relu'))
+    # model.add(Dense(1))
     model.compile(loss='mean_squared_error', optimizer='adam')
     model.fit(trainX, trainY, epochs=60, batch_size=2, verbose=2)
 
