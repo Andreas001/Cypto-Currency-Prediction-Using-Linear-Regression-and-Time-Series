@@ -1,5 +1,5 @@
 <h1 align="center">
-    Crypto Currency Price Prediction
+    Cryptocurrency Price Prediction
 </h1>
 
 ## Getting started
