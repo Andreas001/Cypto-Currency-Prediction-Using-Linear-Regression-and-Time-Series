@@ -17,8 +17,6 @@ This project uses python and you can use any program like what i use, Pycharm to
 
 Dont forget to put the csv files in the same place as your code
 
-Note: all code shown in this readme might not be the final code or the exact code in app.py but rather to show you how it works or if the actual code for method is all you needed.
-
 ## How to use
 
 Once you got your setup just run the code and it should be running on your localhost, in pycharm it will give you a link that you can click in the debbugger.
@@ -51,23 +49,67 @@ Since this is crypto currency so showing it with a candlestick would be optimal 
 
 This is the most simplest and probably every data researcher first method in data science
 
-This code creates the prediction
-
 ```python
-data = pd.read_csv('BCH-USD.csv', header=0)  # load data set
-X = data.iloc[:, 0].values.reshape(-1, 1)  # values converts it into a numpy array
-Y = data.iloc[:, 1].values.reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
-linear_regressor = LinearRegression()  # create object for the class
-linear_regressor.fit(X, Y)  # perform linear regression
-Y_pred = linear_regressor.predict(X)  # make predictions
-```
+@app.callback(Output('graph', 'figure'), [Input('table-dropdown', 'value')])
+def update_graph(value_dropdown):
+    if value_dropdown == 'BTC':
+        df_to_graph = df
+        df_graph = df
+        text = 'Bitcoin'
+        X = df.iloc[:, 0].values.reshape(-1, 1)  # values converts it into a numpy array
+        Y = df.iloc[:, 4].values.reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
+    elif value_dropdown == 'ETH':
+        df_to_graph = dft
+        df_graph = dft
+        text = 'Ethirium'
+        X = dft.iloc[:, 0].values.reshape(-1, 1)  # values converts it into a numpy array
+        Y = dft.iloc[:, 4].values.reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
 
-This code will give you a graph incase you wanted a quick test, this code isn't in app.py
+    linear_regressor = LinearRegression()  # create object for the class
+    linear_regressor.fit(X, Y)  # perform linear regression
+    Y_pred = linear_regressor.predict(X)  # make predictions
 
-```python
-plt.plot(X, Y, color='blue') # actual data
-plt.plot(X, Y_pred, color='red') # linear regression line
-plt.show()
+    df_for_graph = pd.DataFrame(Y_pred, columns=['Prediction'])
+
+    return {
+        'data': [go.Scatter(
+            name='Linear Regression Prediction',
+            mode='lines',
+            x=df_to_graph['Date'],
+            y=df_for_graph['Prediction'],
+            text='Linear Regression Line',
+            marker={
+                'size': 15,
+                'opacity': 0.5,
+                'line': {'width': 0.5, 'color': 'blue'}
+            }
+        ),
+            go.Scatter(
+                name='Actual Data',
+                mode='lines',
+                x=df_graph['Date'],
+                y=df_graph['Open'],
+                text=text,
+                marker={
+                    'size': 15,
+                    'opacity': 0.5,
+                    'line': {'width': 0.5, 'color': 'red'}
+                })
+        ],
+        'layout': go.Layout(
+            xaxis={
+                'title': 'Date',
+                'tickvals': [df_to_graph['Date'].iloc[0], df_to_graph["Date"].iloc[250], df_to_graph["Date"].iloc[500],
+                             df_to_graph["Date"].iloc[750], df_to_graph["Date"].iloc[1000], df_to_graph["Date"].iloc[-1]
+                             ],
+            },
+            yaxis={
+                'title': 'Price : USD',
+            },
+            margin={'l': 40, 'b': 40, 't': 10, 'r': 0},
+            hovermode='closest'
+        )
+    }
 ```
 
 ![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Linear_Regression.png)
@@ -77,70 +119,115 @@ plt.show()
 See screenshot after code to see what it produce
 
 ```python
-# convert an array of values into a dataset matrix
-def create_dataset(dataset, look_back=1):
-    dataX, dataY = [], []
-    for i in range(len(dataset) - look_back - 1):
-        a = dataset[i:(i + look_back), 0]
-        dataX.append(a)
-        dataY.append(dataset[i + look_back, 0])
-    return numpy.array(dataX), numpy.array(dataY)
-```
-```python
-# fix random seed for reproducibility
-numpy.random.seed(7)
-# load the dataset
-dataframe = read_csv('1880-2019.csv', usecols=[1], engine='python')
-dataset = dataframe.values
-dataset = dataset.astype('float32')
-```
+@app.callback(Output('graph-learn', 'figure'), [Input('table-dropdown', 'value')])
+def update_graph_learn(value_dropdown):
+    if value_dropdown == 'BTC':
+        csv_name = 'Gemini_BTCUSD_daily.csv'
+        df_to_learn = df
+    elif value_dropdown == 'ETH':
+        csv_name = 'Gemini_ETHUSD_daily.csv'
+        df_to_learn = dft
 
-```python
-# split into train and test sets
-train_size = int(len(dataset) * 0.67)
-test_size = len(dataset) - train_size
-train, test = dataset[0:train_size, :], dataset[train_size:len(dataset), :]
-# reshape dataset
-look_back = 3
-trainX, trainY = create_dataset(train, look_back)
-testX, testY = create_dataset(test, look_back)
-```
+    # fix random seed for reproducibility
+    numpy.random.seed(7)
+    # load the dataset
+    dataframe = pd.read_csv(csv_name, usecols=[6], engine='python')
+    dataset = dataframe.values
+    dataset = dataset.astype('float32')
 
-```python
-# create and fit Multilayer Perceptron model
-model = Sequential()
-model.add(Dense(12, input_dim=look_back, activation='relu'))
-model.add(Dense(8, activation='relu'))
-model.add(Dense(1))
-model.compile(loss='mean_squared_error', optimizer='adam')
-model.fit(trainX, trainY, epochs=60, batch_size=2, verbose=2)
-# Estimate model performance
-trainScore = model.evaluate(trainX, trainY, verbose=0)
-print('Train Score: %.2f MSE (%.2f RMSE)' % (trainScore, math.sqrt(trainScore)))
-testScore = model.evaluate(testX, testY, verbose=0)
-print('Test Score: %.2f MSE (%.2f RMSE)' % (testScore, math.sqrt(testScore)))
-```
+    # split into train and test sets
+    train_size = int(len(dataset) * 0.67)
+    test_size = len(dataset) - train_size
+    train, test = dataset[0:train_size, :], dataset[train_size:len(dataset), :]
 
-```python
-# generate predictions for training
-trainPredict = model.predict(trainX)
-testPredict = model.predict(testX)
-# shift train predictions for plotting
-trainPredictPlot = numpy.empty_like(dataset)
-trainPredictPlot[:, :] = numpy.nan
-trainPredictPlot[look_back:len(trainPredict) + look_back, :] = trainPredict
-# shift test predictions for plotting
-testPredictPlot = numpy.empty_like(dataset)
-testPredictPlot[:, :] = numpy.nan
-testPredictPlot[len(trainPredict) + (look_back * 2) + 1:len(dataset) - 1, :] = testPredict
-```
+    # reshape dataset
+    look_back = 3
+    trainX, trainY = create_dataset(train, look_back)
+    testX, testY = create_dataset(test, look_back)
 
-```python
-# plot baseline and predictions
-plt.plot(dataset)
-plt.plot(trainPredictPlot)
-plt.plot(testPredictPlot)
-plt.show()
+    # create and fit Multilayer Perceptron model
+    model = Sequential()
+    model.add(Dense(12, input_dim=look_back, activation='relu'))
+    # model.add(Dense(8, activation='relu'))
+    # model.add(Dense(1))
+    model.compile(loss='mean_squared_error', optimizer='adam')
+    model.fit(trainX, trainY, epochs=60, batch_size=2, verbose=2)
+
+    # Estimate model performance
+    trainScore = model.evaluate(trainX, trainY, verbose=0)
+    print('Train Score: %.2f MSE (%.2f RMSE)' % (trainScore, math.sqrt(trainScore)))
+    testScore = model.evaluate(testX, testY, verbose=0)
+    print('Test Score: %.2f MSE (%.2f RMSE)' % (testScore, math.sqrt(testScore)))
+
+    # generate predictions for training
+    trainPredict = model.predict(trainX)
+    testPredict = model.predict(testX)
+
+    # shift train predictions for plotting
+    trainPredictPlot = numpy.empty_like(dataset)
+    trainPredictPlot[:, :] = numpy.nan
+    trainPredictPlot[look_back:len(trainPredict) + look_back, :] = trainPredict
+
+    # shift test predictions for plotting
+    testPredictPlot = numpy.empty_like(dataset)
+    testPredictPlot[:, :] = numpy.nan
+    testPredictPlot[len(trainPredict) + (look_back * 2) + 1:len(dataset) - 1, :] = testPredict
+
+    dataset = pd.DataFrame(dataset, columns=['Data'])
+    trainPredictPlot = pd.DataFrame(trainPredictPlot, columns=['Train'])
+    testPredictPlot = pd.DataFrame(testPredictPlot, columns=['Test'])
+
+    return {
+        'data': [go.Scatter(
+            name='Actual Data',
+            mode='lines',
+            x=df_to_learn['Date'],
+            y=dataset['Data'],
+            text='Actual Data',
+            marker={
+                'size': 15,
+                'opacity': 0.5,
+                'line': {'width': 0.5, 'color': 'blue'}
+            }
+        ),
+            go.Scatter(
+                name='Training',
+                mode='lines',
+                x=df_to_learn['Date'],
+                y=trainPredictPlot['Train'],
+                text='Training',
+                marker={
+                    'size': 15,
+                    'opacity': 0.5,
+                    'line': {'width': 0.5, 'color': 'green'}
+                }),
+
+            go.Scatter(
+                name='Test',
+                mode='lines',
+                x=df_to_learn['Date'],
+                y=testPredictPlot['Test'],
+                text='Test',
+                marker={
+                    'size': 15,
+                    'opacity': 0.5,
+                    'line': {'width': 0.5, 'color': 'red'}
+                })
+        ],
+        'layout': go.Layout(
+            xaxis={
+                'title': 'Date',
+                'tickvals': [df_to_learn['Date'].iloc[0], df_to_learn["Date"].iloc[250], df_to_learn["Date"].iloc[500],
+                             df_to_learn["Date"].iloc[750], df_to_learn["Date"].iloc[1000], df_to_learn["Date"].iloc[-1]
+                             ],
+            },
+            yaxis={
+                'title': 'Price : USD',
+            },
+            margin={'l': 40, 'b': 40, 't': 10, 'r': 0},
+            hovermode='closest'
+        )
+    }
 ```
 
 ![screenshot-linear-regression](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Time_Series.png)
