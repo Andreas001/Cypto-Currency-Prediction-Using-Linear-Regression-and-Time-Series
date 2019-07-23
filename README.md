@@ -1,5 +1,5 @@
 <h1 align="center">
-    Crypto Currency Trend Prediction
+    Crypto Currency Prediction
 </h1>
 
 ## Getting started
