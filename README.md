@@ -1,5 +1,5 @@
 <h1 align="center">
-    Crypto Currency Prediction
+    Crypto Currency Price Prediction
 </h1>
 
 ## Getting started
@@ -17,7 +17,7 @@ This project uses python and you can use any program like what i use, Pycharm to
 
 Dont forget to put the csv files in the same place as your code
 
-Note: all code shown in this readme isn't the final code or the exact code in app.py but rather to show you how it works or if the actual code for method is all you needed.
+Note: all code shown in this readme might not be the final code or the exact code in app.py but rather to show you how it works or if the actual code for method is all you needed.
 
 ## How to use
 
@@ -37,13 +37,13 @@ A table will show you all of the data contained in the csv provided. You will be
 
 #### Graph
 
-This graph will show you a line graph.
+This graph will show you a line graph of the actual data.
 
 ![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Graph.png)
 
 #### Candlestick
 
-Since this is crypto currency so showing it with a candlestick would be optimal to show the complete data.
+Since this is crypto currency so showing it with a candlestick would be optimal to show the complete actual data.
 
 ![screenshot-table](https://raw.githubusercontent.com/Andreas001/Cypto-Currency-Prediction-Using-Linear-Regression-and-Time-Series/master/screenshots/Candlestick.png)
 
@@ -153,16 +153,9 @@ plt.show()
 
 ## Acknowledgments
 
-Crypto currency data taken from [cryptodatadownload](http://www.cryptodatadownload.com/data/northamerican/)
+Crypto currency data - [cryptodatadownload](http://www.cryptodatadownload.com/data/northamerican/)
 
-Linear regression code from [towardsdatascience](https://towardsdatascience.com/linear-regression-in-6-lines-of-python-5e1d0cd05b8d)
+Linear regression - [towardsdatascience](https://towardsdatascience.com/linear-regression-in-6-lines-of-python-5e1d0cd05b8d)
 
-Time series code from [machinelearningmastery](https://machinelearningmastery.com/time-series-prediction-with-deep-learning-in-python-with-keras/)
+Time series code - [machinelearningmastery](https://machinelearningmastery.com/time-series-prediction-with-deep-learning-in-python-with-keras/)
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details
-
-## Help
-
-If you have any questions about this project sadly i wont be taking any questiosn
