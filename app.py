@@ -12,7 +12,6 @@ from keras.models import Sequential
 from keras.layers import Dense
 import math
 
-available_indicators = ['Linear Regression', 'Deep Learning', 'Machine Learning']
 df = pd.read_csv('Gemini_BTCUSD_daily.csv')
 dft = pd.read_csv('Gemini_ETHUSD_daily.csv')
 
@@ -262,7 +261,7 @@ def update_graph_learn(value_dropdown):
     # fix random seed for reproducibility
     numpy.random.seed(7)
     # load the dataset
-    dataframe = pd.read_csv(csv_name, usecols=[3], engine='python')
+    dataframe = pd.read_csv(csv_name, usecols=[6], engine='python')
     dataset = dataframe.values
     dataset = dataset.astype('float32')
 
