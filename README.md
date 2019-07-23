@@ -155,6 +155,10 @@ plt.show()
 
 Crypto currency data taken from [cryptodatadownload](http://www.cryptodatadownload.com/data/northamerican/)
 
+Linear regression code from [towardsdatascience](https://towardsdatascience.com/linear-regression-in-6-lines-of-python-5e1d0cd05b8d)
+
+Time series code from [machinelearningmastery](https://machinelearningmastery.com/time-series-prediction-with-deep-learning-in-python-with-keras/)
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details
